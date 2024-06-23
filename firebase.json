@@ -5,20 +5,20 @@
   },
   "hosting": [
     {
-      "source": ".",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "frameworksBackend": {
-        "region": "us-central1"
-      }
-    },
-    {
       "target": "friendlychat",
       "source": ".",
-      "frameworksBackend": {}
+      "frameworksBackend": {},
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ]
+        }
+      ]
     }
   ],
   "storage": {
@@ -55,9 +55,7 @@
         "firebase-debug.log",
         "firebase-debug.*.log"
       ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint"
-      ]
+      "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run lint"]
     }
   ]
 }
